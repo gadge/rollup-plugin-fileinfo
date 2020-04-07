@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-bundlesize",
-  "version": "0.1.1",
-  "description": "get ncov latest update via interactive cli",
+  "version": "0.0.1",
+  "description": "a rollup plugin to show bundle size",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
