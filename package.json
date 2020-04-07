@@ -1,6 +1,6 @@
 {
-  "name": "rollup-plugin-bundlesize",
-  "version": "0.0.1",
+  "name": "rollup-plugin-bundle-size",
+  "version": "0.0.0",
   "description": "a rollup plugin to show bundle size",
   "main": "dist/index.cjs.js",
   "files": [
