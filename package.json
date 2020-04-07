@@ -11,15 +11,15 @@
     "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "filesize": "^6.1.0",
-    "gzip-size": "^5.1.1",
-    "terser": "^4.6.10",
-    "brotli-size": "^4.0.0",
-    "@spare/logger": "^0.4.8",
-    "@spare/enum-chars": "^0.4.8",
     "@palett/fluo-vector": "^0.1.1",
     "@palett/presets": "^0.1.1",
-    "@vect/vector": "^0.2.1"
+    "@spare/enum-chars": "^0.4.8",
+    "@spare/logger": "^0.4.8",
+    "@vect/vector": "^0.2.1",
+    "brotli-size": "^4.0.0",
+    "filesize": "^6.1.0",
+    "gzip-size": "^5.1.1",
+    "terser": "^4.6.10"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
