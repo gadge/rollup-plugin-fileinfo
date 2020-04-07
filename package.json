@@ -3,15 +3,12 @@
   "version": "0.0.1",
   "description": "a rollup plugin to show bundle size",
   "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "app": "node src/script.js",
     "upint": "yarn upgrade-interactive --latest",
-    "build": "rollup -c rollup.config.js",
-    "watch": "rollup -c rollup.config.js -w"
+    "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
     "filesize": "^6.1.0",
