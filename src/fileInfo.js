@@ -1,5 +1,5 @@
 import { METRO } from '@palett/presets'
-import { DecoObject } from '@spare/logger'
+import { Deco } from '@spare/deco-object'
 import { COSP } from '@spare/enum-chars'
 import { sizeInfo } from './sizeInfo'
 
@@ -7,7 +7,7 @@ export const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: METRO,
-    render: DecoObject({ delim: COSP, bracket: true }),
+    render: Deco({ delim: COSP, bracket: true }),
     showGzipped: true,
     showBrotli: false,
     showMinified: true
@@ -20,6 +20,7 @@ export const fileInfo = (config = {}) => {
         .values(bundle)
         .filter(({ type }) => type !== 'asset')
         .forEach((subBundle) => {
+          // console.log(miscInfo(subBundle))
           console.log(sizeInfo(subBundle, config))
         })
     }

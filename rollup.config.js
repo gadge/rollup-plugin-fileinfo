@@ -1,5 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import { fileInfo } from './src/fileInfo'
 
 const { name, dependencies, main } = require(process.cwd() + '/package.json')
 
@@ -15,7 +16,8 @@ export default [
     ],
     plugins: [
       nodeResolve({ preferBuiltins: true }),
-      commonjs({ include: 'node_modules/**' })
+      commonjs({ include: 'node_modules/**' }),
+      fileInfo(),
     ]
   }
 ]

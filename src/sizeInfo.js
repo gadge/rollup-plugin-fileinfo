@@ -1,11 +1,12 @@
-import { minify } from 'terser'
 import fileSize from 'filesize'
-import { sync as syncBrotliSize } from 'brotli-size'
 import gzip from 'gzip-size'
+import { minify } from 'terser'
+import { sync as syncBrotliSize } from 'brotli-size'
 import { fluoVector } from '@palett/fluo-vector'
+import { zipper } from '@vect/vector-zipper'
+import { Deco as DecoVector } from '@spare/deco-vector'
 import { SUBTLE } from '@palett/presets'
-import { zipper } from '@vect/vector'
-import { DecoVector } from '@spare/logger'
+import { decoPhrase } from '@spare/deco-string'
 
 /**
  *
@@ -22,7 +23,7 @@ import { DecoVector } from '@spare/logger'
 export const sizeInfo = function (bundle, p) {
   const { code, fileName } = bundle, { format } = p
   const minifiedCode = minify(code).code
-  const info = { file: decoFileName(fileName) }
+  const info = { file: decoPhrase(fileName, { delim: '.', stringPreset: SUBTLE }) }
   const sizes = { bundle: fileSize(Buffer.byteLength(code), format) }
   if (p.showBrotli) Object.assign(sizes, { brotli: fileSize(syncBrotliSize(code), format) })
   if (p.showMinified) Object.assign(sizes, { min: fileSize(minifiedCode.length, format) })
