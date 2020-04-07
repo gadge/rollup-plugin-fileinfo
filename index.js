@@ -1,3 +1,3 @@
-import { bundlesize } from './src/bundlesize'
+import { fileInfo } from './src/fileInfo'
 
-export default bundlesize
+export default fileInfo

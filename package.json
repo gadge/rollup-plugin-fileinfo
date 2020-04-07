@@ -1,6 +1,6 @@
 {
-  "name": "rollup-plugin-bundle-size",
-  "version": "0.0.0",
+  "name": "rollup-plugin-fileinfo",
+  "version": "0.0.1",
   "description": "a rollup plugin to show bundle size",
   "main": "dist/index.cjs.js",
   "files": [
@@ -40,16 +40,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoyeungw/rollup-plugin-bundlesize.git"
+    "url": "git+https://github.com/hoyeungw/rollup-plugin-fileinfo.git"
   },
   "keywords": [
-    "ncov",
-    "ncov19",
-    "corona",
-    "covonavirus",
-    "covid",
-    "cdc",
-    "virus"
+    "rollup-plugin",
+    "rollup",
+    "filesizes"
   ],
   "engines": {
     "node": ">=8.x"
@@ -61,7 +57,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoyeungw/rollup-plugin-bundlesize.git"
+    "url": "https://github.com/hoyeungw/rollup-plugin-fileinfo.git"
   },
-  "homepage": "https://github.com/hoyeungw/rollup-plugin-bundlesize#readme"
+  "homepage": "https://github.com/hoyeungw/rollup-plugin-fileinfo#readme"
 }

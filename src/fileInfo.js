@@ -3,7 +3,7 @@ import { DecoObject } from '@spare/logger'
 import { COSP } from '@spare/enum-chars'
 import { sizeInfo } from './sizeInfo'
 
-export const bundlesize = (config = {}) => {
+export const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: METRO,
@@ -14,7 +14,7 @@ export const bundlesize = (config = {}) => {
   }
   config = Object.assign(defaultConfig, config)
   return {
-    name: 'bundlesize',
+    name: 'fileInfo',
     generateBundle (options, bundle, isWrite) {
       Object
         .values(bundle)

@@ -51,7 +51,7 @@ const decoValues = (values, preset) => {
   return vector.zipper(values, colorants, (v, d) => d(v))
 };
 
-const bundlesize = (config = {}) => {
+const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: presets.METRO,
@@ -62,7 +62,7 @@ const bundlesize = (config = {}) => {
   };
   config = Object.assign(defaultConfig, config);
   return {
-    name: 'bundlesize',
+    name: 'fileInfo',
     generateBundle (options, bundle, isWrite) {
       Object
         .values(bundle)
@@ -74,4 +74,4 @@ const bundlesize = (config = {}) => {
   }
 };
 
-module.exports = bundlesize;
+module.exports = fileInfo;

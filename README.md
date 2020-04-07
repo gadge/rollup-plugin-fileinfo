@@ -1,4 +1,4 @@
-# rollup-plugin-bundlesize
+# rollup-plugin-fileinfo
 
 [![npm version][badge-npm-version]][url-npm]
 [![npm download monthly][badge-npm-download-monthly]][url-npm]
@@ -10,19 +10,19 @@
 [![github commit total][badge-github-commit-count]][url-github]
 
 [//]: <> (Shields)
-[badge-npm-version]: https://flat.badgen.net/npm/v/rollup-plugin-bundlesize
-[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/rollup-plugin-bundlesize
-[badge-npm-download-total]:https://flat.badgen.net/npm/dt/rollup-plugin-bundlesize
-[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/rollup-plugin-bundlesize
-[badge-npm-license]: https://flat.badgen.net/npm/license/rollup-plugin-bundlesize
-[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/rollup-plugin-bundlesize
-[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/rollup-plugin-bundlesize
-[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/rollup-plugin-bundlesize
+[badge-npm-version]: https://flat.badgen.net/npm/v/rollup-plugin-fileinfo
+[badge-npm-download-monthly]: https://flat.badgen.net/npm/dm/rollup-plugin-fileinfo
+[badge-npm-download-total]:https://flat.badgen.net/npm/dt/rollup-plugin-fileinfo
+[badge-npm-dependents]: https://flat.badgen.net/npm/dependents/rollup-plugin-fileinfo
+[badge-npm-license]: https://flat.badgen.net/npm/license/rollup-plugin-fileinfo
+[badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/rollup-plugin-fileinfo
+[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/rollup-plugin-fileinfo
+[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/rollup-plugin-fileinfo
 
 [//]: <> (Link)
-[url-npm]: https://npmjs.org/package/rollup-plugin-bundlesize
-[url-pp]: https://packagephobia.now.sh/result?p=rollup-plugin-bundlesize
-[url-github]: https://github.com/hoyeungw/rollup-plugin-bundlesize
+[url-npm]: https://npmjs.org/package/rollup-plugin-fileinfo
+[url-pp]: https://packagephobia.now.sh/result?p=rollup-plugin-fileinfo
+[url-github]: https://github.com/hoyeungw/rollup-plugin-fileinfo
 
 ##### A rollup plugin to show bundle size
 
@@ -32,7 +32,7 @@
 
 #### Install
 ```console
-$ npm i -d rollup-plugin-bundlesize
+$ npm i -d rollup-plugin-fileinfo
 ```
 
 #### Usage
