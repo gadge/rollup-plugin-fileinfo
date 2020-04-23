@@ -5,14 +5,14 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var presets = require('@palett/presets');
 var decoObject = require('@spare/deco-object');
 var enumChars = require('@spare/enum-chars');
+var fluoVector = require('@palett/fluo-vector');
+var decoString = require('@spare/deco-string');
+var decoVector = require('@spare/deco-vector');
+var vectorZipper = require('@vect/vector-zipper');
+var brotliSize = require('brotli-size');
 var fileSize = _interopDefault(require('filesize'));
 var gzip = _interopDefault(require('gzip-size'));
 var terser = require('terser');
-var brotliSize = require('brotli-size');
-var fluoVector = require('@palett/fluo-vector');
-var vectorZipper = require('@vect/vector-zipper');
-var decoVector = require('@spare/deco-vector');
-var decoString = require('@spare/deco-string');
 
 /**
  *
@@ -29,7 +29,7 @@ var decoString = require('@spare/deco-string');
 const sizeInfo = function (bundle, p) {
   const { code, fileName } = bundle, { format } = p;
   const minifiedCode = terser.minify(code).code;
-  const info = { file: decoString.decoPhrase(fileName, { delim: '.', stringPreset: presets.SUBTLE }) };
+  const info = { file: decoFileName(fileName, { delim: '.', stringPreset: presets.SUBTLE }) };
   const sizes = { bundle: fileSize(Buffer.byteLength(code), format) };
   if (p.showBrotli) Object.assign(sizes, { brotli: fileSize(brotliSize.sync(code), format) });
   if (p.showMinified) Object.assign(sizes, { min: fileSize(minifiedCode.length, format) });
@@ -40,7 +40,12 @@ const sizeInfo = function (bundle, p) {
 
 const KBREG = /\s+KB/gi;
 
-const decoNames = decoVector.Deco({ indexed: false, delim: '/' });
+const decoFileName = decoString.Deco({
+  delim: '.',
+  stringPreset: presets.OCEAN
+});
+
+const decoNames = decoVector.Deco({ indexed: false, delim: '/', stringPreset: presets.ATLAS });
 
 const decoValues = (values, preset) => {
   const colorants = fluoVector.fluoVector(values.map(x => +x.replace(KBREG, '')), { preset, colorant: true });

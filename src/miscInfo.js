@@ -1,4 +1,4 @@
-import { deco, decoObject } from '@spare/logger'
+import { deco } from '@spare/logger'
 
 export const miscInfo = function (bundle) {
   const o = Object.assign({}, bundle)
