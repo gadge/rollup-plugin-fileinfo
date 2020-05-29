@@ -40,12 +40,12 @@ const sizeInfo = function (bundle, p) {
 
 const KBREG = /\s+KB/gi;
 
-const decoFileName = decoString.Deco({ delim: '.', stringPreset: presets.OCEAN });
+const decoFileName = decoString.Deco({ delim: '.', presets: [, { preset: presets.SUBTLE }] });
 
-const decoNames = decoVector.Deco({ indexed: false, delim: '/', stringPreset: presets.ATLAS });
+const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: [, { preset: presets.ATLAS }] });
 
 const decoValues = (values, preset) => {
-  const colorants = fluoVector.fluoVector(values.map(x => +x.replace(KBREG, '')), { preset, colorant: true });
+  const colorants = fluoVector.fluoVec.call({ colorant: true }, values.map(x => +x.replace(KBREG, '')), [, { preset }]);
   return vectorZipper.zipper(values, colorants, (v, d) => d(v))
 };
 
