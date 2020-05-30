@@ -1,11 +1,12 @@
-import nodeResolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import { fileInfo } from './src/fileInfo'
+import commonjs       from '@rollup/plugin-commonjs'
+import nodeResolve    from '@rollup/plugin-node-resolve'
+import { decoObject } from '@spare/logger'
+import { fileInfo }   from './src/fileInfo'
 
 const { name, dependencies, main } = require(process.cwd() + '/package.json')
 
 console.log('EXECUTING', name, process.cwd())
-console.log('Dependencies', dependencies)
+console.log('Dependencies', decoObject(dependencies))
 
 export default [
   {

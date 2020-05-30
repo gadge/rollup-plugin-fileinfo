@@ -1,5 +1,6 @@
+import { COLORANT }               from '@palett/enum-colorant-modes'
 import { fluoVec }                from '@palett/fluo-vector'
-import { ATLAS, SUBTLE }          from '@palett/presets'
+import { LAVA, METRO, SUBTLE }    from '@palett/presets'
 import { Deco as DecoString }     from '@spare/deco-string'
 import { Deco as DecoVector }     from '@spare/deco-vector'
 import { zipper }                 from '@vect/vector-zipper'
@@ -34,11 +35,11 @@ export const sizeInfo = function (bundle, p) {
 
 const KBREG = /\s+KB/gi
 
-export const decoFileName = DecoString({ delim: '.', presets: [, { preset: SUBTLE }] })
+/** @type {Function} */export const decoFileName = DecoString({ presets: [, { preset: METRO }] })
 
-export const decoNames = DecoVector({ indexed: false, delim: '/', presets: [, { preset: ATLAS }] })
+export const decoNames = DecoVector({ indexed: false, delim: '/', presets: [, { preset: LAVA }] })
 
 export const decoValues = (values, preset) => {
-  const colorants = fluoVec.call({ colorant: true }, values.map(x => +x.replace(KBREG, '')), [, { preset }])
+  const colorants = fluoVec.call(COLORANT, values.map(x => +x.replace(KBREG, '')), [, { preset }])
   return zipper(values, colorants, (v, d) => d(v))
 }

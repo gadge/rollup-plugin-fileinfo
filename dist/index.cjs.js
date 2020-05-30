@@ -5,6 +5,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var presets = require('@palett/presets');
 var decoObject = require('@spare/deco-object');
 var enumChars = require('@spare/enum-chars');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoVector = require('@palett/fluo-vector');
 var decoString = require('@spare/deco-string');
 var decoVector = require('@spare/deco-vector');
@@ -40,12 +41,12 @@ const sizeInfo = function (bundle, p) {
 
 const KBREG = /\s+KB/gi;
 
-const decoFileName = decoString.Deco({ delim: '.', presets: [, { preset: presets.SUBTLE }] });
+/** @type {Function} */const decoFileName = decoString.Deco({ presets: [, { preset: presets.METRO }] });
 
-const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: [, { preset: presets.ATLAS }] });
+const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: [, { preset: presets.LAVA }] });
 
 const decoValues = (values, preset) => {
-  const colorants = fluoVector.fluoVec.call({ colorant: true }, values.map(x => +x.replace(KBREG, '')), [, { preset }]);
+  const colorants = fluoVector.fluoVec.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KBREG, '')), [, { preset }]);
   return vectorZipper.zipper(values, colorants, (v, d) => d(v))
 };
 
