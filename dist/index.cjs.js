@@ -5,6 +5,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var presets = require('@palett/presets');
 var decoObject = require('@spare/deco-object');
 var enumChars = require('@spare/enum-chars');
+var timestampPretty = require('@valjoux/timestamp-pretty');
 var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoVector = require('@palett/fluo-vector');
 var decoString = require('@spare/deco-string');
@@ -30,31 +31,38 @@ var terser = require('terser');
 const sizeInfo = function (bundle, p) {
   const { code, fileName } = bundle, { format } = p;
   const minifiedCode = terser.minify(code).code;
-  const info = { file: decoFileName(fileName, { delim: '.', stringPreset: presets.SUBTLE }) };
+  const info = {};
   const sizes = { bundle: fileSize(Buffer.byteLength(code), format) };
   if (p.showBrotli) Object.assign(sizes, { brotli: fileSize(brotliSize.sync(code), format) });
   if (p.showMinified) Object.assign(sizes, { min: fileSize(minifiedCode.length, format) });
   if (p.showGzipped) Object.assign(sizes, { gzip: fileSize(gzip.sync(minifiedCode), format) });
-  info[decoNames(Object.keys(sizes))] = decoValues(Object.values(sizes), p.preset);
+
+  info['file'] = decoFileName(fileName);
+  info[decoNames(Object.keys(sizes))] = decoSizeValues(Object.values(sizes), p.preset);
+
   return p.render ? p.render(info) : info
 };
 
-const KBREG = /\s+KB/gi;
+const KB = /\s+KB/gi;
 
-/** @type {Function} */const decoFileName = decoString.Deco({ presets: [, { preset: presets.METRO }] });
+/** @type {Function} */const decoFileName = decoString.Deco({ presets: [undefined, { preset: presets.METRO }] });
 
-const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: [, { preset: presets.LAVA }] });
+const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: [undefined, { preset: presets.LAVA }] });
 
-const decoValues = (values, preset) => {
-  const colorants = fluoVector.fluoVec.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KBREG, '')), [, { preset }]);
+const decoSizeValues = (values, preset) => {
+  const colorants = fluoVector.fluoVec.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KB, '')), [undefined, { preset }]);
   return vectorZipper.zipper(values, colorants, (v, d) => d(v))
 };
+
+const decoSizeInfoObject = decoObject.Deco({ presets: 0, delim: enumChars.COSP, bracket: true });
+
+let index = 0;
 
 const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: presets.METRO,
-    render: decoObject.Deco({ delim: enumChars.COSP, bracket: true }),
+    render: o => `[${ ++index }] ${ timestampPretty.dateTime() } ${ decoSizeInfoObject(o) }`,
     showGzipped: true,
     showBrotli: false,
     showMinified: true
@@ -62,7 +70,7 @@ const fileInfo = (config = {}) => {
   config = Object.assign(defaultConfig, config);
   return {
     name: 'fileInfo',
-    generateBundle (options, bundle, isWrite) {
+    generateBundle(options, bundle, isWrite) {
       Object
         .values(bundle)
         .filter(({ type }) => type !== 'asset')
