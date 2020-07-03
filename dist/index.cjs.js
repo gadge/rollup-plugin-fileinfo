@@ -56,13 +56,11 @@ const decoSizeValues = (values, preset) => {
 
 const decoSizeInfoObject = decoObject.Deco({ presets: 0, delim: enumChars.COSP, bracket: true });
 
-let index = 0;
-
 const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: presets.METRO,
-    render: o => `[${ ++index }] ${ timestampPretty.dateTime() } ${ decoSizeInfoObject(o) }`,
+    render: o => `${ timestampPretty.dateTime() } ${ decoSizeInfoObject(o) }`,
     showGzipped: true,
     showBrotli: false,
     showMinified: true

@@ -6,13 +6,11 @@ import { sizeInfo } from './sizeInfo'
 
 const decoSizeInfoObject = Deco({ presets: 0, delim: COSP, bracket: true })
 
-let index = 0
-
 export const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: METRO,
-    render: o => `[${ ++index }] ${ dateTime() } ${ decoSizeInfoObject(o) }`,
+    render: o => `${ dateTime() } ${ decoSizeInfoObject(o) }`,
     showGzipped: true,
     showBrotli: false,
     showMinified: true
