@@ -1,6 +1,6 @@
 'use strict';
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+Object.defineProperty(exports, '__esModule', { value: true });
 
 var presets = require('@palett/presets');
 var decoObject = require('@spare/deco-object');
@@ -12,9 +12,15 @@ var decoString = require('@spare/deco-string');
 var decoVector = require('@spare/deco-vector');
 var vectorZipper = require('@vect/vector-zipper');
 var brotliSize = require('brotli-size');
-var fileSize = _interopDefault(require('filesize'));
-var gzip = _interopDefault(require('gzip-size'));
+var fileSize = require('filesize');
+var gzip = require('gzip-size');
 var terser = require('terser');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var fileSize__default = /*#__PURE__*/_interopDefaultLegacy(fileSize);
+var gzip__default = /*#__PURE__*/_interopDefaultLegacy(gzip);
+var terser__default = /*#__PURE__*/_interopDefaultLegacy(terser);
 
 /**
  *
@@ -30,13 +36,12 @@ var terser = require('terser');
  */
 const sizeInfo = function (bundle, p) {
   const { code, fileName } = bundle, { format } = p;
-  const minifiedCode = terser.minify(code).code;
+  const minifiedCode = terser__default['default'].minify(code)?.code ?? '';
   const info = {};
-  const sizes = { bundle: fileSize(Buffer.byteLength(code), format) };
-  if (p.showBrotli) Object.assign(sizes, { brotli: fileSize(brotliSize.sync(code), format) });
-  if (p.showMinified) Object.assign(sizes, { min: fileSize(minifiedCode.length, format) });
-  if (p.showGzipped) Object.assign(sizes, { gzip: fileSize(gzip.sync(minifiedCode), format) });
-
+  const sizes = { bundle: fileSize__default['default'](Buffer.byteLength(code), format) };
+  if (p.showBrotli) Object.assign(sizes, { brotli: fileSize__default['default'](brotliSize.sync(code), format) });
+  if (p.showMinified) Object.assign(sizes, { min: fileSize__default['default'](minifiedCode.length, format) });
+  if (p.showGzipped) Object.assign(sizes, { gzip: fileSize__default['default'](gzip__default['default'].sync(minifiedCode), format) });
   info['file'] = decoFileName(fileName);
   info[decoNames(Object.keys(sizes))] = decoSizeValues(Object.values(sizes), p.preset);
 
@@ -80,4 +85,4 @@ const fileInfo = (config = {}) => {
   }
 };
 
-module.exports = fileInfo;
+exports.fileInfo = fileInfo;
