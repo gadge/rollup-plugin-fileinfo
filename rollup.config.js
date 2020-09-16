@@ -1,7 +1,7 @@
 import commonjs       from '@rollup/plugin-commonjs'
 import nodeResolve    from '@rollup/plugin-node-resolve'
 import { decoObject } from '@spare/logger'
-import { fileInfo }   from './dist/index.esm'
+import fileInfo       from './index'
 
 const { name, dependencies, main, module } = require(process.cwd() + '/package.json')
 
@@ -13,8 +13,8 @@ export default [
     input: 'index.js',
     external: Object.keys(dependencies || {}),
     output: [
-      { file: main, format: 'cjs' },  // CommonJS (for Node) build.
-      { file: module, format: 'esm' }  // ES module (for bundlers) build.
+      { exports: 'default', file: main, format: 'cjs' },  // CommonJS (for Node) build.
+      // { file: module, format: 'esm' }  // ES module (for bundlers) build.
     ],
     plugins: [
       nodeResolve({ preferBuiltins: true }),

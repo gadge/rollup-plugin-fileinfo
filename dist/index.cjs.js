@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var presets = require('@palett/presets');
 var decoObject = require('@spare/deco-object');
 var enumChars = require('@spare/enum-chars');
@@ -85,4 +83,4 @@ const fileInfo = (config = {}) => {
   }
 };
 
-exports.fileInfo = fileInfo;
+module.exports = fileInfo;
