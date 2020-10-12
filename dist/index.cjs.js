@@ -53,7 +53,7 @@ const KB = /\s+KB/gi;
 const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: presets.LAVA });
 
 const decoSizeValues = (values, preset) => {
-  const colorants = fluoVector.fluoVector.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KB, '')), [preset]);
+  const colorants = fluoVector.fluoVector.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KB, '')), { presets: [preset] });
   return vectorZipper.zipper(values, colorants, (v, d) => d(v))
 };
 

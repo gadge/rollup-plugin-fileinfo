@@ -42,6 +42,6 @@ const KB = /\s+KB/gi
 export const decoNames = DecoVector({ indexed: false, delim: '/', presets: LAVA })
 
 export const decoSizeValues = (values, preset) => {
-  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), [preset])
+  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), { presets: [preset] })
   return zipper(values, colorants, (v, d) => d(v))
 }
