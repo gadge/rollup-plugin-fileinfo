@@ -10,7 +10,7 @@ export const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: METRO,
-    render: o => `${ dateTime() } ${ decoSizeInfoObject(o) }`,
+    render: o => `${dateTime()} ${decoSizeInfoObject(o)}`,
     showGzipped: true,
     showBrotli: false,
     showMinified: true
