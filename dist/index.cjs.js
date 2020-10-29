@@ -63,7 +63,7 @@ const fileInfo = (config = {}) => {
   const defaultConfig = {
     format: {},
     preset: presets.METRO,
-    render: o => `${ timestampPretty.dateTime() } ${ decoSizeInfoObject(o) }`,
+    render: o => `${timestampPretty.dateTime()} ${decoSizeInfoObject(o)}`,
     showGzipped: true,
     showBrotli: false,
     showMinified: true
