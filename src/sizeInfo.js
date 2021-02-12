@@ -21,9 +21,9 @@ import terser                     from 'terser'
  * @param {boolean} [p.showMinified=true]
  * @return {Object}
  */
-export const sizeInfo = function (bundle, p) {
+export const sizeInfo = async function (bundle, p) {
   const { code, fileName } = bundle, { format } = p
-  const minifiedCode = terser.minify(code)?.code ?? ''
+  const minifiedCode = (await terser.minify(code))?.code ?? ''
   const info = {}
   const sizes = { bundle: fileSize(Buffer.byteLength(code), format) }
   if (p.showBrotli) Object.assign(sizes, { brotli: fileSize(syncBrotliSize(code), format) })
@@ -31,7 +31,6 @@ export const sizeInfo = function (bundle, p) {
   if (p.showGzipped) Object.assign(sizes, { gzip: fileSize(gzip.sync(minifiedCode), format) })
   info['file'] = decoFileName(fileName)
   info[decoNames(Object.keys(sizes))] = decoSizeValues(Object.values(sizes), p.preset)
-
   return p.render ? p.render(info) : info
 }
 

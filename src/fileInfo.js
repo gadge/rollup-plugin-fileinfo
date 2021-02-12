@@ -22,10 +22,7 @@ export const fileInfo = (config = {}) => {
       Object
         .values(bundle)
         .filter(({ type }) => type !== 'asset')
-        .forEach((subBundle) => {
-          // console.log(miscInfo(subBundle))
-          console.log(sizeInfo(subBundle, config))
-        })
+        .forEach(async subBundle => console.log(await sizeInfo(subBundle, config))) // console.log(miscInfo(subBundle))
     }
   }
 }

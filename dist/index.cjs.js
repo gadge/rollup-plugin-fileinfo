@@ -32,9 +32,9 @@ var terser__default = /*#__PURE__*/_interopDefaultLegacy(terser);
  * @param {boolean} [p.showMinified=true]
  * @return {Object}
  */
-const sizeInfo = function (bundle, p) {
+const sizeInfo = async function (bundle, p) {
   const { code, fileName } = bundle, { format } = p;
-  const minifiedCode = terser__default['default'].minify(code)?.code ?? '';
+  const minifiedCode = (await terser__default['default'].minify(code))?.code ?? '';
   const info = {};
   const sizes = { bundle: fileSize__default['default'](Buffer.byteLength(code), format) };
   if (p.showBrotli) Object.assign(sizes, { brotli: fileSize__default['default'](brotliSize.sync(code), format) });
@@ -42,7 +42,6 @@ const sizeInfo = function (bundle, p) {
   if (p.showGzipped) Object.assign(sizes, { gzip: fileSize__default['default'](gzip__default['default'].sync(minifiedCode), format) });
   info['file'] = decoFileName(fileName);
   info[decoNames(Object.keys(sizes))] = decoSizeValues(Object.values(sizes), p.preset);
-
   return p.render ? p.render(info) : info
 };
 
@@ -75,10 +74,7 @@ const fileInfo = (config = {}) => {
       Object
         .values(bundle)
         .filter(({ type }) => type !== 'asset')
-        .forEach((subBundle) => {
-          // console.log(miscInfo(subBundle))
-          console.log(sizeInfo(subBundle, config));
-        });
+        .forEach(async subBundle => console.log(await sizeInfo(subBundle, config))); // console.log(miscInfo(subBundle))
     }
   }
 };
