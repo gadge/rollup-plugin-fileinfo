@@ -1,13 +1,13 @@
 {
   "name": "rollup-plugin-fileinfo",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "a rollup plugin to show bundle size",
   "main": "dist/index.cjs.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "upint": "yarn upgrade-interactive --latest",
+    "upint": "yarn upgrade-interactive",
     "build": "rollup -c rollup.config.js"
   },
   "dependencies": {
@@ -20,26 +20,26 @@
     "@spare/deco-vector": "^0.11.4",
     "@spare/enum-chars": "^0.11.4",
     "@valjoux/timestamp-pretty": "^0.2.3",
-    "@vect/vector": "^0.3.5",
-    "@vect/vector-zipper": "^0.3.5",
+    "@vect/vector": "^0.3.7",
+    "@vect/vector-zipper": "^0.3.7",
     "brotli-size": "^4.0.0",
     "deasync": "^0.1.21",
     "filesize": "^6.1.0",
     "gzip-size": "^6.0.0",
-    "terser": "^5.6.0"
+    "terser": "^5.6.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/preset-env": "^7.12.16",
-    "@babel/register": "^7.12.13",
-    "@babel/runtime": "^7.12.13",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/register": "^7.13.8",
+    "@babel/runtime": "^7.13.10",
     "@palett/says": "^0.7.2",
     "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-json": "^4.0.3",
-    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "@spare/logger": "^0.11.4",
     "@spare/verse": "^0.11.4",
-    "rollup": "^2.38.5",
+    "rollup": "^2.42.3",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-progress": "^1.1.2",
