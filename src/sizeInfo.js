@@ -1,6 +1,6 @@
 import { COLORANT }               from '@palett/enum-colorant-modes'
 import { fluoVector }             from '@palett/fluo-vector'
-import { LAVA, METRO }            from '@palett/presets'
+import { LAVA, METRO, SUBTLE }    from '@palett/presets'
 import { Deco as DecoString }     from '@spare/deco-string'
 import { Deco as DecoVector }     from '@spare/deco-vector'
 import { zipper }                 from '@vect/vector-zipper'
@@ -36,11 +36,11 @@ export const sizeInfo = async function (bundle, p) {
 
 const KB = /\s+KB/gi
 
-/** @type {Function} */export const decoFileName = DecoString({ presets: METRO })
+/** @type {Function} */export const decoFileName = DecoString({ presets: [SUBTLE, METRO] })
 
-export const decoNames = DecoVector({ indexed: false, delim: '/', presets: LAVA })
+export const decoNames = DecoVector({ indexed: false, delim: '/', presets: [SUBTLE, LAVA] })
 
 export const decoSizeValues = (values, preset) => {
-  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), { presets: [preset] })
+  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), [preset])
   return zipper(values, colorants, (v, d) => d(v))
 }

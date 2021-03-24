@@ -47,16 +47,16 @@ const sizeInfo = async function (bundle, p) {
 
 const KB = /\s+KB/gi;
 
-/** @type {Function} */const decoFileName = decoString.Deco({ presets: presets.METRO });
+/** @type {Function} */const decoFileName = decoString.Deco({ presets: [presets.SUBTLE, presets.METRO] });
 
-const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: presets.LAVA });
+const decoNames = decoVector.Deco({ indexed: false, delim: '/', presets: [presets.SUBTLE, presets.LAVA] });
 
 const decoSizeValues = (values, preset) => {
-  const colorants = fluoVector.fluoVector.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KB, '')), { presets: [preset] });
+  const colorants = fluoVector.fluoVector.call(enumColorantModes.COLORANT, values.map(x => +x.replace(KB, '')), [preset]);
   return vectorZipper.zipper(values, colorants, (v, d) => d(v))
 };
 
-const decoSizeInfoObject = decoObject.Deco({ presets: 0, delim: enumChars.COSP, bracket: true });
+const decoSizeInfoObject = decoObject.Deco({ delim: enumChars.COSP, bracket: true });
 
 const fileInfo = (config = {}) => {
   const defaultConfig = {

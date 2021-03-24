@@ -4,7 +4,7 @@ import { COSP }     from '@spare/enum-chars'
 import { dateTime } from '@valjoux/timestamp-pretty'
 import { sizeInfo } from './sizeInfo'
 
-const decoSizeInfoObject = Deco({ presets: 0, delim: COSP, bracket: true })
+const decoSizeInfoObject = Deco({ delim: COSP, bracket: true })
 
 export const fileInfo = (config = {}) => {
   const defaultConfig = {

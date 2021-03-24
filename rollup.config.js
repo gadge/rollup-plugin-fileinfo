@@ -1,7 +1,7 @@
 import commonjs       from '@rollup/plugin-commonjs'
 import nodeResolve    from '@rollup/plugin-node-resolve'
 import { decoObject } from '@spare/logger'
-// import fileInfo       from './index'
+import fileInfo       from './index'
 
 const { name, dependencies, main, module } = require(process.cwd() + '/package.json')
 
@@ -19,7 +19,7 @@ export default [
     plugins: [
       nodeResolve({ preferBuiltins: true }),
       commonjs({ include: 'node_modules/**' }),
-      // fileInfo(),
+      fileInfo(),
     ]
   }
 ]
