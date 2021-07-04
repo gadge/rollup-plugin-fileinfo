@@ -1,4 +1,13 @@
-node_modules
+local
 .idea
-yarn.lock
+temp
+dist
+node_modules
 .yarn/*
+#!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+yarn.lock
