@@ -6,8 +6,8 @@ import { Deco as DecoVector }     from '@spare/deco-vector'
 import { zipper }                 from '@vect/vector-zipper'
 import { sync as syncBrotliSize } from 'brotli-size'
 import fileSize                   from 'filesize'
-import gzip                       from 'gzip-size'
-import terser                     from 'terser'
+import { gzipSizeSync }           from 'gzip-size'
+import { minify }                 from 'terser'
 
 /**
  *
@@ -23,12 +23,12 @@ import terser                     from 'terser'
  */
 export const sizeInfo = async function (bundle, p) {
   const { code, fileName } = bundle, { format } = p
-  const minifiedCode = (await terser.minify(code))?.code ?? ''
+  const minifiedCode = (await minify(code))?.code ?? ''
   const info = {}
   const sizes = { bundle: fileSize(Buffer.byteLength(code), format) }
   if (p.showBrotli) Object.assign(sizes, { brotli: fileSize(syncBrotliSize(code), format) })
   if (p.showMinified) Object.assign(sizes, { min: fileSize(minifiedCode.length, format) })
-  if (p.showGzipped) Object.assign(sizes, { gzip: fileSize(gzip.sync(minifiedCode), format) })
+  if (p.showGzipped) Object.assign(sizes, { gzip: fileSize(gzipSizeSync(minifiedCode), format) })
   info['file'] = decoFileName(fileName)
   info[decoNames(Object.keys(sizes))] = decoSizeValues(Object.values(sizes), p.preset)
   return p.render ? p.render(info) : info

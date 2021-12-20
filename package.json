@@ -1,20 +1,19 @@
 {
   "name": "rollup-plugin-fileinfo",
-  "version": "0.2.11",
+  "version": "0.2.18",
   "description": "a rollup plugin to show bundle size",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "type": "module",
   "exports": {
-    "require": "./dist/index.cjs.js",
-    "import": "./dist/index.esm.js"
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "upint": "yarn upgrade-interactive",
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.mjs"
   },
   "dependencies": {
     "@palett/enum-colorant-modes": "^0.8.18",
