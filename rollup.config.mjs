@@ -1,7 +1,7 @@
 import { nodeResolve }                 from '@rollup/plugin-node-resolve'
 import { decoObject, decoString, ros } from '@spare/logger'
 import fs                              from 'fs'
-import { fileInfo }                    from './dist/index.js'
+import { fileInfo }                    from './dist/index.mjs'
 
 const packageJson = fs.readFileSync(process.cwd() + '/package.json', { encoding: 'utf-8' })
 const { dependencies, exports, name } = JSON.parse(packageJson)
