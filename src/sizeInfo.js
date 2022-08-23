@@ -1,9 +1,6 @@
-import { COLORANT }               from '@palett/enum-colorant-modes'
-import { fluoVector }             from '@palett/fluo-vector'
 import { LAVA, PAGODA, SUBTLE }   from '@palett/presets'
 import { DecoString }             from '@spare/deco-string'
-import { DecoVector }             from '@spare/deco-vector'
-import { zipper }                 from '@vect/vector-zipper'
+import { decoVector, DecoVector } from '@spare/deco-vector'
 import { sync as syncBrotliSize } from 'brotli-size'
 import fileSize                   from 'filesize'
 import { gzipSizeSync }           from 'gzip-size'
@@ -30,7 +27,7 @@ export const sizeInfo = async function (bundle, p) {
   if (p.showMinified) Object.assign(sizes, { min: fileSize(minifiedCode.length, format) })
   if (p.showGzipped) Object.assign(sizes, { gzip: fileSize(gzipSizeSync(minifiedCode), format) })
   info['file'] = decoFileName(fileName)
-  info[decoNames(Object.keys(sizes))] = decoSizeValues(Object.values(sizes), p.preset)
+  info[decoNames(Object.keys(sizes))] = decoVector(Object.values(sizes), { pres: p.preset })
   return p.render ? p.render(info) : info
 }
 
@@ -41,7 +38,7 @@ export const decoFileName = DecoString({ pres: { str: SUBTLE, num: PAGODA } })
 /** @type {function} */
 export const decoNames = DecoVector({ delim: '/', pres: { str: SUBTLE, num: LAVA } })
 
-export const decoSizeValues = (values, preset) => {
-  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), [ preset ])
-  return zipper(values, colorants, (v, d) => d(v))
-}
+// export const decoSizeValues = (values, preset) => {
+//   const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), [ preset ])
+//   return zipper(values, colorants, (v, d) => d(v))
+// }
