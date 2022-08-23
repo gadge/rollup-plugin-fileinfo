@@ -1,8 +1,8 @@
 import { COLORANT }               from '@palett/enum-colorant-modes'
 import { fluoVector }             from '@palett/fluo-vector'
-import { LAVA, METRO, SUBTLE }    from '@palett/presets'
-import { Deco as DecoString }     from '@spare/deco-string'
-import { Deco as DecoVector }     from '@spare/deco-vector'
+import { LAVA, PAGODA, SUBTLE }   from '@palett/presets'
+import { DecoString }             from '@spare/deco-string'
+import { DecoVector }             from '@spare/deco-vector'
 import { zipper }                 from '@vect/vector-zipper'
 import { sync as syncBrotliSize } from 'brotli-size'
 import fileSize                   from 'filesize'
@@ -36,11 +36,12 @@ export const sizeInfo = async function (bundle, p) {
 
 const KB = /\s+KB/gi
 
-/** @type {Function} */export const decoFileName = DecoString({ presets: [SUBTLE, METRO] })
-
-export const decoNames = DecoVector({ indexed: false, delim: '/', presets: [SUBTLE, LAVA] })
+/** @type {function} */
+export const decoFileName = DecoString({ pres: { str: SUBTLE, num: PAGODA } })
+/** @type {function} */
+export const decoNames = DecoVector({ delim: '/', pres: { str: SUBTLE, num: LAVA } })
 
 export const decoSizeValues = (values, preset) => {
-  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), [preset])
+  const colorants = fluoVector.call(COLORANT, values.map(x => +x.replace(KB, '')), [ preset ])
   return zipper(values, colorants, (v, d) => d(v))
 }

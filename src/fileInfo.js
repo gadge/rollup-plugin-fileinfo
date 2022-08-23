@@ -1,10 +1,9 @@
-import { METRO }    from '@palett/presets'
-import { Deco }     from '@spare/deco-object'
-import { COSP }     from '@spare/enum-chars'
-import { dateTime } from '@valjoux/timestamp-pretty'
-import { sizeInfo } from './sizeInfo'
+import { METRO }      from '@palett/presets'
+import { DecoObject } from '@spare/deco-object'
+import { dateTime }   from '@valjoux/timestamp-pretty'
+import { sizeInfo }   from './sizeInfo'
 
-const decoSizeInfoObject = Deco({ delim: COSP, bracket: true })
+const decoSizeInfoObject = DecoObject({ thres: NaN })
 
 export const fileInfo = (config = {}) => {
   const defaultConfig = {
