@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-fileinfo",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "a rollup plugin to show bundle size",
   "main": "./dist/index.cjs",
   "exports": {
@@ -15,20 +15,20 @@
     "build": "rollup -c rollup.config.mjs"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.11.1",
-    "@palett/fluo-vector": "^0.11.1",
-    "@palett/presets": "^0.11.1",
-    "@spare/deco": "^0.15.7",
-    "@spare/deco-object": "^0.15.7",
-    "@spare/deco-string": "^0.15.7",
-    "@spare/deco-vector": "^0.15.7",
-    "@spare/enum-chars": "^0.15.7",
+    "@palett/enum-colorant-modes": "^0.11.4",
+    "@palett/fluo-vector": "^0.11.4",
+    "@palett/presets": "^0.11.4",
+    "@spare/deco": "^0.15.11",
+    "@spare/deco-object": "^0.15.11",
+    "@spare/deco-string": "^0.15.11",
+    "@spare/deco-vector": "^0.15.11",
+    "@spare/enum-chars": "^0.15.11",
     "@valjoux/timestamp-pretty": "^0.3.21",
     "@vect/vector-zipper": "^0.7.16",
     "brotli-size": "^4.0.0",
     "filesize": "^9.0.11",
     "gzip-size": "^7.0.0",
-    "terser": "^5.14.2"
+    "terser": "^5.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
@@ -40,8 +40,8 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@spare/logger": "^0.15.7",
-    "@spare/verse": "^0.15.7",
+    "@spare/logger": "^0.15.11",
+    "@spare/verse": "^0.15.11",
     "rollup": "^2.78.1",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-progress": "^1.1.2",
