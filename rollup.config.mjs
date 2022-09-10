@@ -6,8 +6,8 @@ import { fileInfo }                    from './dist/index.mjs'
 const packageJson = fs.readFileSync(process.cwd() + '/package.json', { encoding: 'utf-8' })
 const { dependencies, exports, name } = JSON.parse(packageJson)
 
-console.debug(ros('Executing'), name, decoString(process.cwd()))
-if (dependencies) console.debug(ros('Dependencies'), decoObject(dependencies))
+console.log(ros('Executing'), name, decoString(process.cwd()))
+if (dependencies) console.log(ros('Dependencies'), decoObject(dependencies))
 
 export default {
   input: 'index.js',
